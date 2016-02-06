@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
+gem 'activerecord'
 gem 'sqlite3'
+
 # Pretty old and pretty much left in the lurch, but it should do.
 gem 'ffi-ncurses'
 
