@@ -2,7 +2,8 @@ require 'yaml'
 require 'active_record'
 require 'logger'
 
-require_relative 'models/note.rb'
+require_relative 'models/note'
+require_relative 'models/tag'
 
 module ActiveRecordControl
   def self.connect(db_config, enable_logger: false, logger_output: STDOUT)
