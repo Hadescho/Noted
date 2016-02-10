@@ -17,4 +17,10 @@ describe NotesController do
       end
     end
   end
+
+  describe '.index' do
+    it 'should return all notes' do
+      expect(NotesController.index.count).to eq Note.count
+    end
+  end
 end
