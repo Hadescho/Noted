@@ -1,5 +1,4 @@
-$LOAD_PATH << '../lib' #TODO: Change this
-
+$LOAD_PATH << '../lib' # TODO: Change this
 
 require 'active_record'
 require 'yaml'

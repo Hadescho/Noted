@@ -1,0 +1,22 @@
+#!/bin/ruby
+
+require_relative '../lib/noted'
+require 'optparse'
+
+tags = []
+OptionParser.new do |opts|
+  opts.banner = "Usage: note [options] [the note itself]\n" \
+    'Note that all arguments without proper option will be considered part of' \
+    ' the note\'s body'
+
+  opts.on('-v', '--version', 'Print the version of the installed noted') do
+    puts Noted::VERSION
+    exit
+  end
+
+  opts.on('-t', '--tag TAG', 'Adds tag to the note') do |tag|
+    tags << tag
+  end
+end.parse!
+
+NotesController.create(name: ARGV.join(' '), tags: tags) if ARGV.count > 0

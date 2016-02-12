@@ -3,3 +3,7 @@ require 'noted/version'
 require 'noted/note'
 require 'noted/tag'
 require 'noted/notes_controller'
+require 'noted/active_record_control'
+
+db_config = YAML.load('db/config.yml')
+ActiveRecordControl.connect(db_config, enable_logger: true)
