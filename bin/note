@@ -19,4 +19,5 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-NotesController.create(name: ARGV.join(' '), tags: tags) if ARGV.count > 0
+tags.map! { |tag_name| {name: tag_name} }
+NotesController.create(name: ARGV.join(' '), tags: Tag.create(tags)) if ARGV.count > 0
