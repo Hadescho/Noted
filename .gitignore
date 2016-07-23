@@ -43,3 +43,6 @@ build/
 Session.vim
 .netrwhist
 *~
+
+### Custom ###
+db/*.sqlite3
