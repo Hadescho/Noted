@@ -33,12 +33,6 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
-    ffi (1.9.10)
-    ffi-locale (1.0.1)
-      ffi (>= 1.0.9)
-    ffi-ncurses (0.4.0)
-      ffi (>= 1.0.9)
-      ffi-locale (>= 1.0.0)
     i18n (0.7.0)
     json (1.8.3)
     logger (1.2.8)
@@ -110,7 +104,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
-  ffi-ncurses
   logger
   rspec
   rubocop
@@ -118,5 +111,8 @@ DEPENDENCIES
   sqlite3
   standalone_migrations
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.11.2
+   1.12.5
