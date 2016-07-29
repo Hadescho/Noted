@@ -5,6 +5,7 @@ gem 'activerecord'
 gem 'logger'
 gem 'sqlite3'
 gem 'standalone_migrations'
+gem 'rake'
 
 group :test do
   gem 'rspec'
