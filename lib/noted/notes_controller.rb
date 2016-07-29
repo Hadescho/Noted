@@ -1,11 +1,9 @@
 class NotesController
-  class << self
-    def create(args = {})
-      Note.create!(args)
-    end
+  def create(args = {})
+    Note.create!(args)
+  end
 
-    def index
-      Note.all
-    end
+  def index
+    Note.all
   end
 end
