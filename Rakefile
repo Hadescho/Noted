@@ -1,6 +1,6 @@
 require 'rspec/core/rake_task'
 require 'yaml'
-require "active_record"
+require 'active_record'
 require 'standalone_migrations'
 
 StandaloneMigrations::Tasks.load_tasks
