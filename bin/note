@@ -1,4 +1,4 @@
-#!/bin/ruby
+#!/usr/bin/env ruby
 
 require_relative '../lib/noted'
 require 'optparse'
@@ -20,4 +20,4 @@ OptionParser.new do |opts|
 end.parse!
 
 tags.map! { |tag_name| Tag.create(name: tag_name) }
-NotesController.create(name: ARGV.join(' '), tags: tags) if ARGV.count > 0
+NotesController.new.create(name: ARGV.join(' '), tags: tags) if ARGV.count > 0
