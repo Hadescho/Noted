@@ -6,6 +6,7 @@ gem 'logger'
 gem 'sqlite3'
 gem 'standalone_migrations'
 gem 'rake'
+gem 'vedeu'
 
 group :test do
   gem 'rspec'
