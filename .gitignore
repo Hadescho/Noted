@@ -46,3 +46,4 @@ Session.vim
 
 ### Custom ###
 db/*.sqlite3
+.byebug_history
