@@ -62,6 +62,14 @@ describe NotesController do
             .to change { Note.count }.by(-1)
         end
       end
+
+      context 'when given name' do
+        it 'should delete the record' do
+          name = Note.first.name
+          expect { NotesController.new.delete(name: name) }.
+            to change { Note.count }.by(-1)
+        end
+      end
     end
   end
 end
