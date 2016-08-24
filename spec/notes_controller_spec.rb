@@ -52,6 +52,18 @@ describe NotesController do
             .to(params[:description])
         end
       end
+
+      context 'when given new tag' do
+        it 'should save the tag in the database' do
+          params = {
+            id: Note.first.id,
+            name: Note.first.name,
+            tags: [Tag.new(name: 'Test')]
+          }
+          expect { NotesController.new.edit(params) }
+            .to change { Tag.count }.by(1)
+        end
+      end
     end
 
     describe '#delete' do
@@ -66,8 +78,8 @@ describe NotesController do
       context 'when given name' do
         it 'should delete the record' do
           name = Note.first.name
-          expect { NotesController.new.delete(name: name) }.
-            to change { Note.count }.by(-1)
+          expect { NotesController.new.delete(name: name) }
+            .to change { Note.count }.by(-1)
         end
       end
     end

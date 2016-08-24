@@ -12,11 +12,6 @@ describe Tag do
       expect { Tag.create!(name: nil, note: note) }
         .to raise_error(ActiveRecord::RecordInvalid)
     end
-
-    it 'should validate the presence of note' do
-      expect { Tag.create!(name: 'test', note: nil) }
-        .to raise_error(ActiveRecord::RecordInvalid)
-    end
   end
 
   describe '#note' do

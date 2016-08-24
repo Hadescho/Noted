@@ -3,21 +3,44 @@
 require_relative '../lib/noted'
 require 'optparse'
 
-tags = []
-OptionParser.new do |opts|
-  opts.banner = "Usage: note [options] [the note itself]\n" \
-    'Note that all arguments without proper option will be considered part of' \
-    ' the note\'s body'
+console = Noted::Console.new(ARGV[0])
 
-  opts.on('-v', '--version', 'Print the version of the installed noted') do
+OptionParser.new do |opts|
+  opts.banner = "Usage: note COMMAND [OPTIONS] [DESCRIPTION]\n"
+  opts.separator ''
+  opts.separator 'COMMANDS'
+  opts.separator '      add         :add a note'
+  opts.separator '      del(ete)    :delete a note'
+  opts.separator '      edit        :edit a note'
+  opts.separator '      list        :list notes'
+  # opts.separtor '      interactive :open interactive TUI to manage your notes'
+  opts.separator ''
+  opts.separator 'Note that all arguments without proper option will be'
+  opts.separator 'considered part of the note\'s description'
+
+  opts.on('-v', '--version', 'Print the version') do
     puts Noted::VERSION
     exit
   end
 
+  opts.on('-h', '--help', 'The help that you are reading right now') do
+    puts opts
+    exit
+  end
+
   opts.on('-t', '--tag TAG', 'Adds tag to the note') do |tag|
-    tags << tag
+    console.add_tag(tag)
+  end
+
+  opts.on('-n', '--name NAME', 'Name of the note') do |name|
+    console.options[:name] = name
+  end
+
+  opts.on('-p', '--priority PRIORITY', 'Priority of the note') do |priority|
+    console.options[:priorty] = priority
   end
 end.parse!
 
-tags.map! { |tag_name| Tag.create(name: tag_name) }
-NotesController.new.create(name: ARGV.join(' '), tags: tags) if ARGV.count > 0
+# puts Noted::NoModeChosen unless mode
+
+# tags.map! { |tag_name| Tag.create(name: tag_name) }
