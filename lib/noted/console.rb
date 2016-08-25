@@ -6,7 +6,9 @@ module Noted
       edit: /edit/i,
       list: /list/i
     }.freeze
+
     attr_accessor :options
+
     def initialize(command)
       @command = parse_command(command)
       @options = {}

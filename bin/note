@@ -41,3 +41,5 @@ OptionParser.new do |opts|
     console.options[:priorty] = priority
   end
 end.parse!
+
+console.perform
