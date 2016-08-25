@@ -19,6 +19,8 @@ module Noted
       case @command
       when :add
         @notes_controller.create(@options)
+      when :delete
+        @notes_controller.delete(@options)
       end
     end
 

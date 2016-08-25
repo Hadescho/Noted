@@ -8,10 +8,10 @@ class NotesController
   end
 
   def edit(args = {})
-    Note.find_by_id_or_name(args).update_attributes(args)
+    Note.find_by_name!(args[:name]).update_attributes(args)
   end
 
   def delete(args = {})
-    Note.find_by_id_or_name(args).destroy
+    Note.find_by_name!(args[:name]).destroy
   end
 end

@@ -30,7 +30,7 @@ describe NotesController do
     context 'when given no arguments' do
       it 'should raise an exception' do
         expect { NotesController.new.edit({}) }
-          .to raise_error ArgumentError
+          .to raise_error ActiveRecord::RecordNotFound
       end
     end
     context 'when given arguments' do
@@ -67,19 +67,17 @@ describe NotesController do
     end
 
     describe '#delete' do
-      context 'when given id' do
-        it 'should delete the record' do
-          id = Note.first.id
-          expect { NotesController.new.delete(id: id) }
-            .to change { Note.count }.by(-1)
-        end
-      end
-
       context 'when given name' do
         it 'should delete the record' do
           name = Note.first.name
           expect { NotesController.new.delete(name: name) }
             .to change { Note.count }.by(-1)
+        end
+      end
+
+      context 'when no name is given' do
+        it 'should raise RecordNotFound' do
+          expect { NotesController.new.delete(name: 'MissingNo.') }
         end
       end
     end

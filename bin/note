@@ -11,7 +11,7 @@ OptionParser.new do |opts|
   opts.separator ''
   opts.separator 'COMMANDS'
   opts.separator '      add         :add a note'
-  opts.separator '      del(ete)    :delete a note'
+  opts.separator '      del[ete]    :delete a note'
   opts.separator '      edit        :edit a note'
   opts.separator '      list        :list notes'
   # opts.separtor '      interactive :open interactive TUI to manage your notes'
