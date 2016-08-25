@@ -4,6 +4,7 @@ require_relative '../lib/noted'
 require 'optparse'
 
 console = Noted::Console.new(ARGV[0])
+console.options[:description] = ARGV[1..-1].join(' ')
 
 OptionParser.new do |opts|
   opts.banner = "Usage: note COMMAND [OPTIONS] [DESCRIPTION]\n"
@@ -40,7 +41,3 @@ OptionParser.new do |opts|
     console.options[:priorty] = priority
   end
 end.parse!
-
-# puts Noted::NoModeChosen unless mode
-
-# tags.map! { |tag_name| Tag.create(name: tag_name) }
