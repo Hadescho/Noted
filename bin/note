@@ -40,6 +40,10 @@ OptionParser.new do |opts|
   opts.on('-p', '--priority PRIORITY', 'Priority of the note') do |priority|
     console.options[:priorty] = priority
   end
+  opts.on('-N', '--new-name NEW_NAME',
+          'New name of the note (Valid only for edit)') do |new_name|
+    console.options[:new_name] = new_name
+  end
 end.parse!
 
 console.perform

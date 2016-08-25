@@ -23,6 +23,8 @@ module Noted
         @notes_controller.create(@options)
       when :delete
         @notes_controller.delete(@options)
+      when :edit
+        @notes_controller.edit(@options)
       end
     end
 

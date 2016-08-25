@@ -42,13 +42,13 @@ describe NotesController do
 
       context 'when given additional arguments' do
         it 'should change the object' do
+          note = Note.create(name: 'Test1')
           params = {
-            id: Note.first.id,
-            name: Note.first.name,
+            name: note.name,
             description: 'Desc added'
           }
           expect { NotesController.new.edit(params) }
-            .to change { Note.first.description }.from(nil)
+            .to change { note.reload.description }.from(nil)
             .to(params[:description])
         end
       end
