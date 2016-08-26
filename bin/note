@@ -5,7 +5,6 @@ require_relative '../lib/noted'
 require 'optparse'
 
 console = Noted::Console.new(ARGV[0])
-console.options[:description] = ARGV[1..-1].join(' ')
 
 OptionParser.new do |opts|
   opts.banner = "Usage: note COMMAND [OPTIONS] [DESCRIPTION]\n"
@@ -39,7 +38,7 @@ OptionParser.new do |opts|
   end
 
   opts.on('-p', '--priority PRIORITY', 'Priority of the note') do |priority|
-    console.options[:priorty] = priority
+    console.options[:priority] = priority
   end
   opts.on('-N', '--new-name NEW_NAME',
           'New name of the note (Valid only for edit)') do |new_name|
@@ -50,5 +49,6 @@ OptionParser.new do |opts|
     Rainbow.enabled = false
   end
 end.parse!
+console.options[:description] = ARGV[1..-1].join(' ')
 
 console.perform
