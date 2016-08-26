@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'noted/console'
 
 describe Noted::Console do
@@ -57,13 +58,13 @@ describe Noted::Console do
       end
 
       context 'and there are options given' do
-        before(:each){ @note = Note.create(name: 'Test3', description: 'Desc') }
+        before(:each) { @note = Note.create(name: 'Test3') }
 
         it 'should change note\'s name' do
-          params = { name: 'Test3', new_name: 'TestChanged'}
+          params = { name: 'Test3', new_name: 'TestChanged' }
           console.options = params
-          expect { console.perform }.to change { @note.reload.name }.
-            to('TestChanged')
+          expect { console.perform }.to change { @note.reload.name }
+            .to('TestChanged')
         end
       end
     end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'active_record_spec_helper'
 
 require 'noted/note'

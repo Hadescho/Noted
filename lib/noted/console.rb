@@ -1,16 +1,21 @@
+# frozen_string_literal: true
 module Noted
   class Console
-    COMANDS = {
+    COMMANDS = {
       add: /add/i,
       delete: /del(ite)?/i,
       edit: /edit/i,
       list: /list/i
     }.freeze
 
+    NO_COMMAND_ERROR =  'No command detected. Please try again with ADD/DEL/' \
+                        'EDIT/LIST as first argument after the binary name'
+
     attr_accessor :options
 
     def initialize(command)
       @command = parse_command(command)
+      raise ArgumentError, NO_COMMAND_ERROR unless @command
       @options = {}
       @options[:tags_attributes] = []
       @notes_controller = NotesController.new
@@ -25,6 +30,8 @@ module Noted
         @notes_controller.delete(@options)
       when :edit
         @notes_controller.edit(@options)
+      when :list
+        Noted::Renderer.new(options).list
       end
     end
 
@@ -35,9 +42,7 @@ module Noted
     private
 
     def parse_command(command)
-      COMANDS.each do |command_symbol, regex|
-        return command_symbol if command.match(regex)
-      end
+      COMMANDS.find { |_, regex| regex.match(command) }&.first
     end
   end
 end

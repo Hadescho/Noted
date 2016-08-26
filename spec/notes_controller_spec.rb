@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'noted/note'
 require 'noted/notes_controller'
 

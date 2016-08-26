@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 $LOAD_PATH << '../lib' # TODO: Change this
 
 require 'active_record'
