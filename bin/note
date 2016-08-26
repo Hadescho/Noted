@@ -44,6 +44,10 @@ OptionParser.new do |opts|
           'New name of the note (Valid only for edit)') do |new_name|
     console.options[:new_name] = new_name
   end
+  opts.on('-C', '--disable-colors',
+          'Disable the colors on list command. Enabled by default') do
+    Rainbow.enabled = false
+  end
 end.parse!
 
 console.perform
