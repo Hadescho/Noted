@@ -27,11 +27,10 @@ module Noted
 
     def render_body
       color_pairs_count = Constants::COLOR_PAIRS.size
-      grouped = @notes.group_by { |note| note.tags.first }
+      grouped = @notes.group_by { |note| note.tags.first.name }
       grouped.each_pair.with_index do |(_ , group), index|
-
         color_pair = Constants::COLOR_PAIRS[index % color_pairs_count]
-        group.each do |note|
+        group.sort_by(&:priority).reverse!.each do |note|
           note.decorate(color_pair, @measurements).print
         end
       end

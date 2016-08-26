@@ -8,7 +8,7 @@ class NotesController
     @notes = if args.values.all?(&:blank?)
                Note.all
              else
-               Note.where(note_params(args))
+               Note.where(note_params(args.except(:tags_attributes)))
              end
     Noted::Renderer.new(@notes).render
   end
@@ -27,6 +27,8 @@ class NotesController
   def note_params(args)
     new_params = args.clone.except(:new_name)
     new_params[:name] = args[:new_name] if args[:new_name]
-    new_params
+    new_params.keep_if do |attribute_name, value|
+      attribute_name == :tags_attributes || !value.blank?
+    end
   end
 end
