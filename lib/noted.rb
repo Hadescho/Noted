@@ -13,5 +13,4 @@ require 'noted/note_decorator'
 require 'byebug'
 require 'rainbow'
 
-db_config = YAML.load_file('db/config.yml')
-ActiveRecordControl.connect(db_config, enable_logger: false)
+

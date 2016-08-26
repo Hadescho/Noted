@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+require 'sinatra'
+require 'digest'
+require_relative '../lib/noted'
+require_relative '../lib/noted/user'
+
+
+get '/' do
+  'This is API server for <a href=\'https://github.com/Hadescho/Noted\'>Noted' \
+    '</a>'
+end
+
+get '/users/index' do
+  User.all.map(&:username).join("\n")
+end
+
+# TODO Better encryption and salt
+post '/users/sign_up' do
+  User.create!(username: params[:username],
+              password: Digest::SHA1.hexdigest(params[:password]))
+  'Registration successful'
+end
+
+db_config = YAML.load_file('db/server_config.yml')
+ActiveRecordControl.connect(db_config, enable_logger: true)

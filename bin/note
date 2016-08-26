@@ -51,4 +51,8 @@ OptionParser.new do |opts|
 end.parse!
 console.options[:description] = ARGV[1..-1].join(' ')
 
+db_config = YAML.load_file('db/config.yml')
+ActiveRecordControl.connect(db_config, enable_logger: false)
+
 console.perform
+

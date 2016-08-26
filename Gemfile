@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'standalone_migrations'
 gem 'rake'
 gem 'rainbow'
+gem 'sinatra'
 
 group :test do
   gem 'rspec'
