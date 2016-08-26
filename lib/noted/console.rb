@@ -31,7 +31,7 @@ module Noted
       when :edit
         @notes_controller.edit(@options)
       when :list
-        Noted::Renderer.new(options).list
+        @notes_controller.index(@options)
       end
     end
 

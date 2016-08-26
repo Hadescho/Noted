@@ -4,8 +4,13 @@ class NotesController
     Note.create!(args)
   end
 
-  def index
-    Note.all
+  def index(args = {})
+    if args.values.all?(&:blank?)
+      @notes = Note.all
+    else
+      @notes = Note.where(note_params(args))
+    end
+    Noted::Renderer.new(@notes).render
   end
 
   # TODO: Extract logic somewhere else
