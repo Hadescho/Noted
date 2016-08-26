@@ -22,6 +22,16 @@ module Noted
 
     def render
       render_header
+      render_body
+    end
+
+    def render_body
+      @notes.group_by { |note| note.tags.first }.each do | _ , group|
+        color_pair = Constants::COLOR_PAIRS.sample
+        group.each do |note|
+          note.decorate(color_pair, @measurements).print
+        end
+      end
     end
 
     private

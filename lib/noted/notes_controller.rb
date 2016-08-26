@@ -13,7 +13,6 @@ class NotesController
     Noted::Renderer.new(@notes).render
   end
 
-  # TODO: Extract logic somewhere else
   def edit(args = {})
     note = Note.find_by_name!(args[:name])
     note.update_attributes!(note_params(args))

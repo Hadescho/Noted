@@ -28,11 +28,12 @@ describe Note do
       end
     end
   end
-  describe '.find_by_id_or_name' do
-    context 'when giving neither id nor name' do
-      it 'should raise argumentError' do
-        expect { Note.find_by_id_or_name }.to raise_error ArgumentError
-      end
+
+  describe '#decorate' do
+    let(:note) { Note.create(name: 'TestNote', description: 'Dsc') }
+    let(:color_pair) { { bg: :black, fg: :white } }
+    it 'should return a NoteDecorator' do
+      expect(note.decorate(color_pair, nil)).to be_a(NoteDecorator)
     end
   end
 end

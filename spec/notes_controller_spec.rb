@@ -21,12 +21,6 @@ describe NotesController do
     end
   end
 
-  describe '#index' do
-    it 'should return all notes' do
-      expect(NotesController.new.index.count).to eq Note.count
-    end
-  end
-
   describe '#edit' do
     context 'when given no arguments' do
       it 'should raise an exception' do
