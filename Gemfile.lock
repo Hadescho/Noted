@@ -107,6 +107,7 @@ DEPENDENCIES
   activerecord
   byebug
   logger
+  rainbow
   rake
   rspec
   rubocop
