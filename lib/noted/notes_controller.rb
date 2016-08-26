@@ -5,11 +5,11 @@ class NotesController
   end
 
   def index(args = {})
-    if args.values.all?(&:blank?)
-      @notes = Note.all
-    else
-      @notes = Note.where(note_params(args))
-    end
+    @notes = if args.values.all?(&:blank?)
+               Note.all
+             else
+               Note.where(note_params(args))
+             end
     Noted::Renderer.new(@notes).render
   end
 

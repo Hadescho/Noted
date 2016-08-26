@@ -5,7 +5,6 @@ require 'noted/renderer/constants'
 describe Noted::Renderer do
   let(:renderer) { Noted::Renderer.new([]) }
 
-  
   describe '#header' do
     subject { renderer.header }
 

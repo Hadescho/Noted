@@ -12,16 +12,16 @@ module Noted
       }.freeze
 
       COLOR_PAIRS = [
-        {bg: :black, fg: :green},
-        {bg: :black, fg: :cyan},
-        {bg: :black, fg: :magenta},
-        {bg: :black, fg: :yellow},
-        {bg: :black, fg: :orange},
-        {bg: :black, fg: :red},
-        {bg: :black, fg: :violet},
-      ]
+        { bg: :black, fg: :green },
+        { bg: :black, fg: :cyan },
+        { bg: :black, fg: :magenta },
+        { bg: :black, fg: :yellow },
+        { bg: :black, fg: :orange },
+        { bg: :black, fg: :red },
+        { bg: :black, fg: :violet }
+      ].freeze
 
-      HEADER_PAIR = {bg: :black, fg: :white}
+      HEADER_PAIR = { bg: :black, fg: :white }.freeze
     end
   end
 end

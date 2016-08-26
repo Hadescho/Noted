@@ -23,15 +23,14 @@ module Noted
 
       def tags_width
         @tags_width ||= [Constants::LENGTHS[:name_length_min],
-                         @screen_width * Constants::LENGTHS[:tags_length_percent]]
-                        .max.floor
+                         @screen_width *
+                           Constants::LENGTHS[:tags_length_percent]].max.floor
       end
 
       def description_width
         @description_width ||= @screen_width - name_width - priority_width -
                                tags_width
       end
-
     end
   end
 end

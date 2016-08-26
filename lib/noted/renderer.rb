@@ -6,7 +6,6 @@ module Noted
       @notes = notes
     end
 
-    
     def header
       prepare_for_header('NAME', @measurements.name_width) +
         prepare_for_header('DESCRIPTION', @measurements.description_width) +
@@ -17,7 +16,7 @@ module Noted
     def render_header
       fg = Constants::HEADER_PAIR[:fg]
       bg = Constants::HEADER_PAIR[:bg]
-      puts Rainbow('Noted'.center(@measurements.screen_width)).foreground(fg).bg(bg)
+      puts Rainbow('Noted'.center(@measurements.screen_width)).fg(fg).bg(bg)
       puts Rainbow(header).foreground(fg).background(bg)
     end
 
